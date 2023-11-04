@@ -1,8 +1,14 @@
-#!/bin/bash
+#!/bin/sh
+# curlAttack.sh
+# A simple script to hit a server endpoint, intended for legitimate load testing.
+
+# The URL should be an argument to the script or hardcoded for your own use case
+URL=$1
+
+# Simple loop to hit the server with curl
 while true
 do
-#Please use 'man curl' to see what -vk is for, also -X command can be useful too.
-curl -vk $1
-#sleep 5
+  curl -s "${URL}" > /dev/null
+  echo "Hit ${URL} with curl"
+  sleep 1 # Pause between hits to prevent overwhelming the server
 done
-exit 0
